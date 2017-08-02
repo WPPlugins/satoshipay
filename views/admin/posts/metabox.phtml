@@ -1,0 +1,16 @@
+<div class="satoshipay_pricing_notification">
+  <?php if (false === $validCredentials): ?>
+    <p><?php _e('Activate SatoshiPay by supplying API credentials in the <a href="admin.php?page=satoshipay/src/SatoshiPay/SatoshiPayAdminPlugin.php">SatoshiPay Settings</a>.', $this->textdomain); ?></p>
+  <?php endif; ?>
+</div>
+<div class="satoshipay_pricing_enabled">
+    <input type="hidden" name="satoshipay_pricing_disabled" id="satoshipay_pricing_disabled" value="1">
+    <label for="satoshipay_pricing_enabled"><input type="checkbox" name="satoshipay_pricing_enabled" id="satoshipay_pricing_enabled" value="1"<?php echo ($pricing['enabled'] ? 'checked="checked"' : ''); ?> <?php echo ($validCredentials ? '' : 'disabled="disabled"') ?>><span><?php _e('Paid ' . ucfirst(get_post_type(get_the_ID())), $this->textdomain) ?></span></label>
+    <p class="description"><?php _e('Activate to make the entire ' . get_post_type(get_the_ID()) . ' paid content. To add a free teaser text, use "Insert Start Tag" from the SatoshiPay dropdown in the visual editor and write your teaser above the start tag. Note: You can <strong>not</strong> use paid audios, downloads, images or videos in this ' . get_post_type(get_the_ID()) . ' if the checkbox above is activated.', $this->textdomain) ?></p>
+</div>
+<div class="satoshipay_pricing_prices">
+    <label for="satoshipay_pricing_satoshi"><span class="label"><?php _e('Price', $this->textdomain); ?></span></label>
+    <input class="price" type="number" name="satoshipay_pricing_satoshi" id="satoshipay_pricing_satoshi" value="<?php echo ((isset($pricing['satoshi']) && $pricing['enabled']) ? esc_attr($pricing['satoshi']) : ''); ?>" <?php echo ($validCredentials ? '' : 'disabled="disabled"') ?>>
+    <span class="legend"><?php _e('In satoshis, e.g. "8000" (max. "2000000")', $this->textdomain); ?></span>
+    <span class="legend" id="satoshipay_pricing_satoshi_fiat"></span>
+</div>

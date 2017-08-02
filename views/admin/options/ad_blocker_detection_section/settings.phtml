@@ -1,0 +1,25 @@
+<fieldset id="satoshipay_ad_blocker_detection">
+  <p>
+    <label>
+      <input type="radio" name="satoshipay_ad_blocker_detection[enabled]" value="0" <?php checked($enabled, false); ?> onclick="jQuery('#satoshipay_ad_blocker_detection_price').attr('disabled', jQuery(this).attr('checked'));" />
+      No action
+    </label>
+  </p>
+  
+  <p>
+    <label>
+      <input type="radio" name="satoshipay_ad_blocker_detection[enabled]" value="1" <?php checked($enabled, true); ?> onclick="jQuery('#satoshipay_ad_blocker_detection_price').attr('disabled', !jQuery(this).attr('checked'));" />
+      Ask for payment
+    </label>
+  </p>
+  
+  <ul>
+    <li>
+      <label>
+        Price:
+        <input type="text" id="satoshipay_ad_blocker_detection_price" class="medium-text" name="satoshipay_ad_blocker_detection[price]" value="<?php echo esc_attr($price); ?>" <?php echo $enabled ? '' : 'disabled="disabled"'; ?> />
+        satoshis per post/page
+      </label>
+    </li>
+  </ul>
+</fieldset>

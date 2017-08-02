@@ -1,0 +1,17 @@
+<?php if (defined('SATOSHIPAY_API_URL')): ?>
+<script>
+    providerApiUrl = '<?php echo SATOSHIPAY_API_URL; ?>';
+</script>
+<?php endif; ?>
+<div class="wrap">
+    <h2><?php _e('SatoshiPay Settings', $this->textdomain); ?></h2>
+
+    <form method="post" action="options.php">
+    <?php
+        settings_fields('satoshipay_settings_section');
+        do_settings_sections('satoshipay_options_page');
+        settings_errors();
+        submit_button('Save Changes');
+    ?>
+    </form>
+</div>
